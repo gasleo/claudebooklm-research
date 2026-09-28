@@ -1,0 +1,54 @@
+flowchart TB
+    USER["User"]
+
+    subgraph DEFINITION["Problem definition"]
+        CHAT["Decision chat"]
+        CONTEXT["DecisionContext"]
+        CHAT --> CONTEXT
+    end
+
+    subgraph ORCHESTRATION["Orchestration"]
+        ORCH["Orchestrator"]
+        PLANNER["Task Planner"]
+        DISPATCHER["Task Dispatcher"]
+        MANAGER["Agent Manager"]
+        AGG["Result Aggregator"]
+
+        ORCH --> PLANNER
+        PLANNER --> DISPATCHER
+        DISPATCHER --> MANAGER
+        MANAGER --> AGG
+    end
+
+    MODEL["Main model"]
+
+    subgraph EXECUTION["Execution"]
+        RA["Research Agent"]
+        AA["Analysis Agent"]
+        VA["Verification Agent"]
+    end
+
+    TOOL["ResearchTool"]
+    MCP["NotebookLM MCP"]
+    SOURCES["Sources / research"]
+
+    USER --> CHAT
+    CONTEXT --> ORCH
+
+    PLANNER <--> MODEL
+    AGG <--> MODEL
+
+    MANAGER --> RA
+    MANAGER --> AA
+    MANAGER --> VA
+
+    RA --> TOOL
+    VA --> TOOL
+    TOOL --> MCP
+    MCP --> SOURCES
+
+    RA --> AGG
+    AA --> AGG
+    VA --> AGG
+
+    ORCH --> USER

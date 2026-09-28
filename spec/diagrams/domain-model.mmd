@@ -1,0 +1,44 @@
+classDiagram
+    class DecisionContext {
+        +id
+        +objective
+        +context
+        +requirements
+        +constraints
+        +decisions
+        +assumptions
+        +unknowns
+        +createdAt
+        +updatedAt
+    }
+
+    class Decision {
+        +id
+        +description
+        +reason
+        +status
+    }
+
+    class Requirement {
+        +id
+        +description
+        +priority
+        +status
+    }
+
+    class Constraint {
+        +id
+        +description
+        +type
+    }
+
+    class Assumption {
+        +id
+        +description
+        +confidence
+    }
+
+    DecisionContext "1" --> "*" Decision
+    DecisionContext "1" --> "*" Requirement
+    DecisionContext "1" --> "*" Constraint
+    DecisionContext "1" --> "*" Assumption

@@ -1,0 +1,28 @@
+flowchart TB
+    DC["DecisionContext"]
+
+    subgraph ORCH["Orchestrator"]
+        INPUT["Context Handler"]
+        PLANNER["Task Planner"]
+        DISPATCHER["Task Dispatcher"]
+        MANAGER["Agent Manager"]
+        AGGREGATOR["Result Aggregator"]
+        SYNTHESIZER["Response Synthesizer"]
+
+        INPUT --> PLANNER
+        PLANNER --> DISPATCHER
+        DISPATCHER --> MANAGER
+        MANAGER --> AGGREGATOR
+        AGGREGATOR --> SYNTHESIZER
+    end
+
+    MODEL["Main model"]
+    AGENTS["Subagents"]
+    USER["User"]
+
+    DC --> INPUT
+    PLANNER <--> MODEL
+    SYNTHESIZER <--> MODEL
+    MANAGER --> AGENTS
+    AGENTS --> AGGREGATOR
+    SYNTHESIZER --> USER

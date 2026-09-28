@@ -1,0 +1,26 @@
+flowchart TB
+    USER["User"]
+    DECISION["Decision chat"]
+    CONTEXT["DecisionContext"]
+    ORCHESTRATOR["Orchestrator"]
+    MODEL["Main model"]
+    AGENTS["Subagents"]
+    TOOL["ResearchTool"]
+    NLM["NotebookLM MCP"]
+    RESEARCH["Sources"]
+
+    USER --> DECISION
+    DECISION --> CONTEXT
+    CONTEXT --> ORCHESTRATOR
+
+    ORCHESTRATOR --> MODEL
+    MODEL --> ORCHESTRATOR
+
+    ORCHESTRATOR --> AGENTS
+    AGENTS --> TOOL
+    TOOL --> NLM
+    NLM --> RESEARCH
+    RESEARCH --> AGENTS
+
+    AGENTS --> ORCHESTRATOR
+    ORCHESTRATOR --> USER

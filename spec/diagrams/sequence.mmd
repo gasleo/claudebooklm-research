@@ -1,0 +1,36 @@
+sequenceDiagram
+    actor User
+    participant DC as Decision chat
+    participant Ctx as DecisionContext
+    participant Orch as Orchestrator
+    participant Model as Main model
+    participant Agents as Subagents
+    participant Tool as ResearchTool
+    participant NLM as NotebookLM MCP
+    participant Agg as Result Aggregator
+
+    User->>DC: States the problem
+
+    loop Until the problem is defined
+        DC->>User: Asks / requests a decision
+        User->>DC: Answers
+    end
+
+    DC->>Ctx: Produces DecisionContext
+    Ctx->>Orch: Hands over context
+    Orch->>Model: Requests a plan
+    Model->>Orch: Returns task plan
+    Orch->>Agents: Delegates tasks
+    Agents->>Tool: query / discover
+    Tool->>NLM: chat_start / research_start
+    NLM-->>Tool: task_id
+    loop Poll until completed
+        Tool->>NLM: chat_status / research_status
+        NLM-->>Tool: pending | completed
+    end
+    Tool-->>Agents: Result + references
+    Agents-->>Agg: Deliver results
+    Agg-->>Orch: Aggregated results
+    Orch->>Model: Requests synthesis
+    Model-->>Orch: Final answer
+    Orch-->>User: Presents result
