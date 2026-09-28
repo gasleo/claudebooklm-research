@@ -35,18 +35,20 @@ flowchart LR
 ```python
 from notebooklm_research import ResearchTool, connect
 
-async def ask_user(discovery) -> bool:          # the human in the loop (R8)
+
+async def ask_user(discovery) -> bool:  # the human in the loop (R8)
     ...
 
-async with connect() as backend:                 # spawns notebooklm-mcp over stdio
+
+async with connect() as backend:  # spawns notebooklm-mcp over stdio
     tool = ResearchTool(backend, confirm_import=ask_user)
 
     answer = await tool.query("Why does the reactor settle at 260 °C?", "my-notebook")
-    answer.status        # completed | partial (answer without citations) | failed
-    answer.sources       # Source(reference, cited_text, citation_number), never invented
+    answer.status  # completed | partial (answer without citations) | failed
+    answer.sources  # Source(reference, cited_text, citation_number), never invented
 
     found = await tool.discover("pasta water uptake kinetics", "my-notebook")
-    await tool.import_sources(found)             # asks ask_user first; declined = nothing sent
+    await tool.import_sources(found)  # asks ask_user first; declined = nothing sent
 ```
 
 Design decisions, each pinned by tests:
