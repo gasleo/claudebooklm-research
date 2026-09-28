@@ -4,7 +4,7 @@
 
 [Leer en castellano](README.es.md)
 
-[![CI](https://github.com/OWNER/claudebooklm-research/actions/workflows/ci.yml/badge.svg)](https://github.com/OWNER/claudebooklm-research/actions/workflows/ci.yml)
+[![CI](https://github.com/gasleo/claudebooklm-research/actions/workflows/ci.yml/badge.svg)](https://github.com/gasleo/claudebooklm-research/actions/workflows/ci.yml)
 
 An AI agent that writes code will happily fill a gap with a plausible number. In most software that is a style problem; in a physics simulator, a pricing model or anything someone has to defend, it is a correctness problem. This repository specifies an architecture and implements its research layer: an agent answers from a **curated corpus** (a NotebookLM notebook), **cites** what it found, **says so** when the corpus does not have it, and **asks before** changing the corpus.
 
