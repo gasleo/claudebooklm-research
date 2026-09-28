@@ -127,6 +127,15 @@ For interactive use inside Claude Code, copy [`kit/CLAUDE.md`](kit/CLAUDE.md) in
 
 The orchestrator is the natural next step: `ResearchTool` already returns the structured, failure-tolerant results the spec's aggregator expects.
 
+## Model-agnostic
+
+Despite the name, nothing here requires Claude. Claude Code is the agent this was built and used with; it is not a dependency.
+
+- **`ResearchTool`** has no dependency on any model. It talks MCP to `notebooklm-mcp` and returns structured data, so any agent, orchestrator or plain script can call it.
+- **`notebooklm-mcp`** works with any MCP client.
+- **The spec** speaks of a generic "main model" and never assumes a vendor.
+- **The kit** is the one Claude Code–specific part: `CLAUDE.md` and the `/research` skill use Claude Code's formats. The rules they carry apply to any agent; for another tool, move them into that tool's own instruction file.
+
 ## Credits
 
 The MCP server is [notebooklm-py](https://github.com/teng-lin/notebooklm-py) by Teng Lin (MIT). It drives NotebookLM through its web session, not an official Google API; this repository is a client of it and neither includes nor modifies it.

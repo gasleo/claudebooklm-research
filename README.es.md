@@ -34,6 +34,15 @@ Un agente de IA que escribe código completa un hueco con un número plausible s
 
 Los pasos están en el [README en inglés](README.md#quick-start) y en [kit/README.md](kit/README.md): instalar `notebooklm-py`, loguearse, registrar el MCP en Claude Code, y copiar el bloque de `CLAUDE.md` y la skill.
 
+## Independiente del modelo
+
+Pese al nombre, nada de esto requiere Claude. Claude Code es el agente con el que se construyó y se usó, no una dependencia.
+
+- **`ResearchTool`** no depende de ningún modelo. Habla MCP con `notebooklm-mcp` y devuelve datos estructurados, así que lo puede usar cualquier agente, orquestador o script.
+- **`notebooklm-mcp`** funciona con cualquier cliente MCP.
+- **La spec** habla de un "modelo principal" genérico y no supone ningún proveedor.
+- **El kit** es la única parte específica de Claude Code: `CLAUDE.md` y la skill `/research` usan sus formatos. Las reglas que llevan valen para cualquier agente; con otra herramienta, se pasan a su propio archivo de instrucciones.
+
 ## Créditos
 
 El servidor MCP es [notebooklm-py](https://github.com/teng-lin/notebooklm-py), de Teng Lin (MIT). Opera NotebookLM a través de su sesión web, no de una API oficial de Google; este repositorio no lo incluye ni lo modifica.
