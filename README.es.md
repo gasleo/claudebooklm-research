@@ -1,4 +1,4 @@
-# claude-notebooklm-research
+# claudebooklm-research
 
 **Investigación con fuentes para agentes de código: Claude Code + Google NotebookLM por MCP, con citas trazables y una persona en el circuito.**
 

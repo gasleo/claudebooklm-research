@@ -1,5 +1,5 @@
 [project]
-name = "notebooklm-research"
+name = "claudebooklm-research"
 version = "0.1.0"
 description = "ResearchTool: grounded query/discover over the NotebookLM MCP server, with traceable citations and human-approved corpus changes."
 readme = "README.md"

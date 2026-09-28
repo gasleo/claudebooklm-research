@@ -31,7 +31,7 @@ Copy [CLAUDE.md](CLAUDE.md) into your project's `CLAUDE.md` and replace `<NOTEBO
 From your project's root, with this repository cloned next to it:
 
 ```bash
-mkdir -p .claude/skills && cp -r ../claude-notebooklm-research/kit/skills/research .claude/skills/
+mkdir -p .claude/skills && cp -r ../claudebooklm-research/kit/skills/research .claude/skills/
 ```
 
 Use `~/.claude/skills/` instead to make it available in every project. Then, inside Claude Code:
